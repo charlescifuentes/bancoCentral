@@ -1,4 +1,6 @@
 const ClienteControlador = require('../app/controladores/clienteControlador.js');//Importamos la clase controlador
+const CuentaControlador = require('../app/controladores/CuentaControlador.js');//Importamos la clase controlador
+
 //Indicamos que es un modulo que se va a usar desde afuera y recibe como parametro la instancia de app para implementar sus funciones
 module.exports = (app) => {
 //Recurso clientes encargado de consultar un cliente segun el id en base de datos
