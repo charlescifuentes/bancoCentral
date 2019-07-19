@@ -1,14 +1,14 @@
-//const ClienteControlador = require('../app/controladores/clienteControlador.js');//Importamos la clase controlador
+const ClienteControlador = require('../app/controladores/clienteControlador.js');//Importamos la clase controlador
 //Indicamos que es un modulo que se va a usar desde afuera y recibe como parametro la instancia de app para implementar sus funciones
 module.exports = (app) => {
-/*Recurso clientes encargado de consultar un cliente segun el id en base de datos
+//Recurso clientes encargado de consultar un cliente segun el id en base de datos
 app.get('/clientes/:id', function(req, res) { 
     ClienteControlador.consultaCliente(req, res);
 });
 //Recurso Clientes encargado de consultar todos los clientes de la base de datos
 app.get('/clientes', function(req, res){
     ClienteControlador.consultaClientes(req, res);
-});*/
+});
 //Recurso raiz que me devuelve un json con la estructura de una persona
 app.get('/', function (req, res) {
     let persona = {
