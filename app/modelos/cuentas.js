@@ -3,7 +3,8 @@ const sql = db.connection;//Instanciamos conexion para usar con las consultas
 
 //Creamos un objeto de la tabla para proteger y enmascarar los nombres de la base de datos
 const table = {
-    name    : "cuentas",    
+    name_cuentas    : "cuentas",
+    name_clientes   : "clientes",    
     fields  : {
         id          :   "id_cuenta",
         cliente     :   "id_cliente",
@@ -29,37 +30,40 @@ class Cuenta {
         let mp = {};
         if(entity){
             mp = new Cliente(
+                entity.id_cuenta,
                 entity.id_cliente,
-                entity.nombre_cliente,
-                entity.documento_cliente,
-                entity.profesion_cliente
+                entity.tipo_cuenta,
+                entity.saldo_cuenta,
+                entity.saldo_sobregiro
             );
         }        
         return mp;
     }
-    //Funcion que consulta un cliente segun el id de la base de datos
-    static consultarCliente(id, callback) {
+    //Funcion que consulta una cuenta segun el id del cliente
+    static consultarCuenta(id, callback) {
         //Armamos la consulta segn los parametros que necesitemos
         let query = 'SELECT * ';
-        query += 'FROM '+table.name+' ';
-        query += 'WHERE '+table.fields.id+'='+id+';';   
+        query += 'FROM '+table.name_cuentas+' ';
+        query += 'JOIN '+table.name_clientes+' ';
+        query += 'ON '+table.name_clientes+'.'+table.fields.cliente+' = '+table.name_cuentas+'.'+table.fields.cliente+' ';
+        query += 'WHERE '+table.fields.cliente+'='+id+';';   
         //Verificamos la conexion
         if(sql){
             sql.query(query, (err, result) => {
                 if(err){
                     throw err;
                 }else{     
-                    let cliente = Cliente.mapFactory(result[0]);                                                                                          
-                    console.log(cliente);                          
-                    callback(null,cliente);
+                    let cuenta = Cuenta.mapFactory(result[0]);                                                                                          
+                    console.log(cuenta);                          
+                    callback(null,cuenta);
                 }
             })
         }else{
-            throw "Problema conectado con Mysql en consultarCliente";
+            throw "Problema conectado con Mysql en consultarCuenta";
         } 
     }
     //Funcion encargada de consultar todos los clientes de la base de datos
-    static consultarClientes(callback) {
+    static consultarCuentas(callback) {
         //Armamos la consulta segn los parametros que necesitemos
         let query = 'SELECT * ';
         query += 'FROM '+table.name+';';   
@@ -84,4 +88,4 @@ class Cuenta {
     }
 }
 
-module.exports = Cliente;
+module.exports = Cuenta;

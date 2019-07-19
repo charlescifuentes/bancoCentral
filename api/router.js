@@ -9,6 +9,10 @@ app.get('/clientes/:id', function(req, res) {
 app.get('/clientes', function(req, res){
     ClienteControlador.consultaClientes(req, res);
 });
+//Recurso cuentas encargado de consultar una cuenta segun el id del cliente en base de datos
+app.get('/cuentas/:id', function(req, res) { 
+    CuentaControlador.consultaCuenta(req, res);
+});
 //Recurso raiz que me devuelve un json con la estructura de una persona
 app.get('/', function (req, res) {
     let persona = {

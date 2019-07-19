@@ -3,10 +3,10 @@ let Cuenta = require('../modelos/cuenta.js');//Importamos la clase modelo
 class CuentaControlador {
     constructor() {   
     }
-    //Funcion encargada de manejar la consulta de una cuenta por id cuenta e id cliente
+    //Funcion encargada de manejar la consulta de una cuenta por id del cliente
     consultaCuenta(req, res) {
         let id = req.params.id;
-        Cliente.consultarCliente(id, (err, data) => {
+        Cuenta.consultarCuenta(id, (err, data) => {
                 if(data){
                     res.json(data);
                 }else{
@@ -25,5 +25,5 @@ class CuentaControlador {
             })
     }  
 }
-const instanciaControlador = new ClienteControlador();
+const instanciaControlador = new CuentaControlador();
 module.exports  = instanciaControlador;
