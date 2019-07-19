@@ -1,4 +1,4 @@
-let Cuenta = require('../modelos/cuenta.js');//Importamos la clase modelo
+let Cuenta = require('../modelos/cuentas.js');//Importamos la clase modelo
 //Creamos la clase controladora para manejar la informacion de las cuentas
 class CuentaControlador {
     constructor() {   
