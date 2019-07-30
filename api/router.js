@@ -1,5 +1,6 @@
 const ClienteControlador = require('../app/controladores/clienteControlador.js');//Importamos la clase controlador
-const CuentaControlador = require('../app/controladores/CuentaControlador.js');//Importamos la clase controlador
+const CuentaControlador = require('../app/controladores/cuentaControlador.js');//Importamos la clase controlador
+const TestControlador = require('../app/controladores/testControlador.js');
 
 //Indicamos que es un modulo que se va a usar desde afuera y recibe como parametro la instancia de app para implementar sus funciones
 module.exports = (app) => {
@@ -33,5 +34,4 @@ app.post('/personas', (req, res) => {
     };
     res.send(miPersona);
 });
-
 }

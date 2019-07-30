@@ -58,7 +58,7 @@ class Cliente {
     }
     //Funcion encargada de consultar todos los clientes de la base de datos
     static consultarClientes(callback) {
-        //Armamos la consulta segn los parametros que necesitemos
+        //Armamos la consulta según los parametros que necesitemos
         let query = 'SELECT * ';
         query += 'FROM '+table.name+';';   
         //Verificamos la conexion

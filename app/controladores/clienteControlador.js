@@ -1,5 +1,5 @@
 let Cliente = require('../modelos/cliente.js');//Importamos la clase modelo
-//Creamos la clase controladora para manjar la informacion de los clientes
+//Creamos la clase controladora para manejar la informacion de los clientes
 class ClienteControlador {
     constructor() {   
     }
